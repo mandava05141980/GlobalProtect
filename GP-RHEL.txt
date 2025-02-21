@@ -1,0 +1,27 @@
+GP installation steps:
+
+1. Install RHEL 8 or 9
+2. Update the latest patches using # yum update -y and reboot the server
+2. Copy PanGPLinux-6.2.0-c10.tgz to /tmp directory
+3. copy gp_install_v1.1.sh to /tmp directory
+4. Change the permissions to the gp_install_v1.1.sh
+# chmod 775 gp_install_v1.1.sh
+5. untar the PanGPLinux-6.2.0-c10.tgz using tar command
+# tar -xvzf PanGPLinux-6.2.0-c10.tgz
+6. run the script using the below syntax
+# ./gp_install_v1.1.sh
+
+
+subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+sudo rpm -qi epel-release
+sudo dnf --enablerepo=epel group
+sudo dnf group list | grep -i xfce
+sudo dnf groupinstall "Xfce" "base-x"
+echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
+sudo systemctl set-default graphical
+reboot
+
+& 
+https://wiki.crowncloud.net/?How_to_Install_Xrdp_with_GNOME_GUI_on_Rocky_Linux_9
+
